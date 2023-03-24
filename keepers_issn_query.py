@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Author: Peter Eisner, Technische Informationsbibliothek (TIB)
+
 # This script iterates over a list of ISSNs, retrieving linked data from
 # the ISSN Portal. Information concerning the archival status according
 # to Keepers is extracted and saved into a CSV file.
@@ -107,8 +109,8 @@ if ignore_list:
     with open(ignore_list, 'r') as ignorelist:
         for line in ignorelist:
             ignored_issn = line.rstrip()
-            while ignored_issn in issns:                       # by itself remove stops
-                issns.remove(ignored_issn)                     # after one occurrence
+            while ignored_issn in issns:                       # by itself 'remove' stops
+                issns.remove(ignored_issn)                     # after first occurrence
 
 # making sure ISSNs do not end with lowercase x.
 for position in range(len(issns)):

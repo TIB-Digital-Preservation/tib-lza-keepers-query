@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Functions for the Keepers query. Extra file for better readability.
+# Functions for the TIB LZA Keepers query script.
 
 import logging
 import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from copy import deepcopy
-# requests uses JSONDecodeError from simplejson if available (ie, atm not on myapp)
+# requests uses JSONDecodeError from simplejson if available, which is not always
+# the case.
 try:
     from simplejson.errors import JSONDecodeError
 except ImportError:
@@ -24,7 +25,7 @@ def get_json_from_portal(issn):
     """Returns a dictionary with the complete JSON data for a given ISSN."""
 
     # using a requests session to implement a retry strategy. independent of the query
-    # interval (0 to 2 seconds) our requests timed out in appr. 1 of 1000 cases.
+    # interval (0 to 2 seconds) our requests time out in an irregular pattern.
     session = requests.Session()
     retries = Retry(total=6, backoff_factor=2, status_forcelist=[429, 500, 502, 503, 504])
     adapter = HTTPAdapter(max_retries=retries)
@@ -160,8 +161,6 @@ def extract_keepers_from(issn, response_dict):
                 incorrect_issn = element['hasIncorrectISSN']
                 logger.info(f'Record reports incorrect ISSN: {incorrect_issn}.')
                 if incorrect_issn == issn:
-                    # experience suggests incorrect ISSNs do not have a record, so
-                    # we do not expect this to get triggered at all.
                     logger.warning('Used ISSN equals reported incorrect ISSN.')
         if element.get('@id') == f'resource/ISSN/{issn}#KeyTitle':
             keepers_info['08 keyTitle'] = element.get('value', 'n.a.')
