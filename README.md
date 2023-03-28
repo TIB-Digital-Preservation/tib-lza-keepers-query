@@ -5,11 +5,12 @@
 
 ## Was tut es?
 
-Das Keepers Query Skript liest öffentliche Records aus dem ISSN-Portal aus. Diese werden nach Keepers-Informationen durchsucht und die Ergebnisse in eine Tabelle (CSV) exportiert.
+Das Keepers Query Skript liest öffentliche Records aus dem ISSN-Portal aus. Diese werden nach Keepers-Informationen durchsucht und die Ergebnisse in eine Tabelle (CSV) exportiert.  
+__Vorsicht:__ Das ISSN-Portal unterscheidet zwischen öffentlichen und registrierungspflichtigen Daten. Bei einer IP-basierten automatischen Anmeldung holt das Skript die registrierungespflichtigen Datensätze ab. Möglicherweise bestehen hier Volumenbegrenzungen. Die Keepers-Daten sind in den öffentlichen Daten enthalten.  
 
 ## Keepers-Daten und das ISSN-Portal
 
-Die [Keepers Registry](https://web.archive.org/web/20191128175758/https://thekeepers.org/) war ein Projekt zum Austausch des archivarischen Status von wissenschaftlichen Zeitschriften. Es war bis 2019 am _EDINA_ an der Universität Edinburgh angesiedelt und wurde danach vom _ISSN International Centre_ in Paris übernommen.  
+Die [Keepers Registry](https://web.archive.org/web/20191128175758/https://thekeepers.org/) begann an der _EDINA_ an der Universität Edinburgh. Das Ziel der Keepers ist der Austausch des archivarischen Status von wissenschaftlichen Zeitschriften. Seit bis 2019 wird die Registry durch das _ISSN International Centre_ weitergeführt.  
 Die archivierenden Institutionen melden Daten über den Status und den Umfang der Archivierung ihrer Zeitschriften an das ISSN Center. Dort werden sie als externe Daten in die ISSN-Records eingebunden.  
 Die Struktur der Records ist im [ISSN Linked Data Application Profile](https://www.issn.org/understanding-the-issn/assignment-rules/issn-linked-data-application-profile/) beschrieben.
 
@@ -94,9 +95,11 @@ Neben einigen Standard-Modulen von Python wird `requests` für die Web-Abfragen 
 
 Erfolgreich getestet wurde das Skript unter Ubuntu 20.04 und Ubuntu 22.10.
 
+Unter Windows läuft es (derzeit) nicht.
+
 ## Lizenz
 
 Dieses Skript steht unter der [MIT-Lizenz](LICENSE).
 
-
+Es wurde im Team Langzeitarchivierung der TIB entwickelt und steht in keiner Verbindung mit dem ISSN International Centre.
 

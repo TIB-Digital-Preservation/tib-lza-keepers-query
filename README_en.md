@@ -5,11 +5,12 @@
 
 ## What does it do?
 
-The Keepers Query script reads public records from the ISSN Portal. It looks for Keepers data within these records and exports the results as a table (CSV).
+The Keepers Query script reads public records from the ISSN Portal. It looks for Keepers data within these records and exports the results as a table (CSV).  
+__Caution:__ There is a difference between public data and data you have to be logged in to the ISSN Portal as a costumer. If you use the script within an auto-logged-in IP range, it will download the not public data. Your data retrieval may be limited in this case. Keepers data is included in the public records and does not require a log in.
 
 ## Keepers Data and the ISSN Portal
 
-The [Keepers Registry](https://web.archive.org/web/20191128175758/https://thekeepers.org/) has been a project aiming to provide an exchange mechanism for the archival status of scientific journals. Until 2019 it was located at the _EDINA_ (University of Edinburgh). The data and the responsibility was then taken over by the ISSN International Centre in Paris.  
+The [Keepers Registry](https://web.archive.org/web/20191128175758/https://thekeepers.org/) started at the _EDINA_ at the University Edinburgh. Its goal is to provide an exchange mechanism regarding the archival status of scientific journals. Since 2019 the ISSN International Centre in Paris took over the data and continues the registry.  
 Archiving institutions provide data about the archival status and archived ranges of their journals to the ISSN Centre. The information then becomes a part of the record's external data.  
 The structure of the records is explained in the [ISSN Linked Data Application Profile](https://www.issn.org/understanding-the-issn/assignment-rules/issn-linked-data-application-profile/).
 
@@ -92,7 +93,11 @@ Aside from standard Python modules `requests` is used to obtain the data.
 
 The script is known to work on Ubuntu 20.04 and Ubuntu 22.10.
 
+Known to not work on Windows (for now).
+
 ## License
 
 The script is released under the [MIT License](LICENSE).
+
+It is developed by the TIB's digital preservation team without the knowledge or approval of the ISSN International Centre.
 
