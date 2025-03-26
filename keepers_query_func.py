@@ -203,11 +203,11 @@ def extract_keepers_from(issn, response_dict):
         if len(keepers_info[item]) != 0:
             if type(keepers_info[item]) == list:
                 if any(word in item for word in separated_by_bar):
-                    keepers_info[item] = ' | '.join(keepers_info[item])
+                    keepers_info[item] = ' | '.join(sorted(keepers_info[item]))
                 elif 'creativeWorkStatus' in item:
                     keepers_info[item] = ', '.join(sorted(set(keepers_info[item])))
                 else:
-                    keepers_info[item] = ', '.join(keepers_info[item])
+                    keepers_info[item] = ', '.join(sorted(keepers_info[item]))
         else:
             keepers_info[item] = 'n.a.'
     keepers_info['09 Number of Archives'] = number_of_archives          # setting this
